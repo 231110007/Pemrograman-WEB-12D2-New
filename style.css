@@ -41,6 +41,7 @@ h1 {
 
 .overlap p {
   color: #ffffff;
+  margin-top: 15px;
   font-size: 1.1em;
   text-shadow: 3px 3px 5px #1d1d1d;
 }
