@@ -204,29 +204,7 @@ footer p {
     margin: 0 auto;
   }
 
-  .main-content {
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
-    gap: 10px;
-  }
-
-  .card {
-    width: 70%;
-    padding-bottom: 10px;
-    border-radius: 10px;
-  }
-
-  .card img {
-    height: 140px;
-    object-fit: cover;
-  }
-
-  .card p {
-    font-size: 11px;
-    margin: 0 6px 6px;
-  }
-
+  .main-content,
   .main-content-task {
     flex-direction: column;
     align-items: center;
@@ -234,17 +212,20 @@ footer p {
     gap: 10px;
   }
 
+  .card,
   .task {
     width: 70%;
     padding-bottom: 10px;
     border-radius: 10px;
   }
 
+  .card img,
   .task img {
     height: 140px;
     object-fit: cover;
   }
 
+  .card p,
   .task p {
     font-size: 11px;
     margin: 0 6px 6px;
