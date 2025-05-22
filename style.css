@@ -125,7 +125,7 @@ button:hover {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  background-color: #c5c5c5;
+  background-color: #bebebe;
   font-size: 10px;
   text-align: center;
 }
@@ -190,18 +190,18 @@ footer p {
 
 @media (max-width: 768px) {
   button {
-    font-size: 11px;
-    padding: 8px 16px;
-    width: fit-content;
-    align-self: center;
+    font-size: 9px;
+    padding: 6px 12px;
   }
 
   .card button,
   .task button {
-    width: fit-content;
-    font-size: 10px;
-    padding: 6px 10px;
-    margin: 0 auto;
+    font-size: 8px;
+    padding: 5px 8px;
+  }
+
+  button a {
+    font-size: 12px !important;
   }
 
   .main-content,

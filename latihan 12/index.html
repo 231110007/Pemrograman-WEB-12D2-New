@@ -1,23 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>404 - Page Not Found</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <title>Daftar Belanja</title>
   </head>
   <body>
-    <div class="container">
-      <h1>404</h1>
-      <img src="img/error-dribbble_2.gif" alt="Lost 404" class="lost-img" />
-      <h2>Page not found</h2>
-      <p>Look like you're lost</p>
-    </div>
+    <h2>Daftar Belanja</h2>
+    <!-- Input untuk memasukkan nama barang -->
+    <input type="text" id="namaBarang" placeholder="Nama Barang" />
+    <!-- Input untuk memasukkan jumlah barang --><input
+      type="number"
+      id="jumlahBarang"
+      placeholder="Jumlah"
+    />
+    <!-- Tombol untuk menambahkan barang ke daftar -->
+    <button onclick="tambahBarang()">Tambah</button>
+    <!-- List kosong yang nantinya akan diisi item belanja -->
+    <ul id="daftarBelanja"></ul>
+    <script>
+      // Fungsi untuk menambahkan barang ke daftar belanja
+      function tambahBarang() {
+      // Ambil nilai dari input nama dan jumlah, lalu hilangkan spasi berlebih di
+      depan/akhir
+      const nama = document.getElementById("namaBarang").value.trim();
+      const jumlah = document.getElementById("jumlahBarang").value.trim();
+      // Validasi input:
+      // Pastikan nama tidak kosong, jumlah tidak kosong, jumlah adalah angka dan
+      lebih besar dari 0
+      if (nama === "" || jumlah === "" || isNaN(jumlah) || jumlah <= 0) {
+      alert("Isi nama barang dan jumlah dengan benar."); // Tampilkan peringatan
+      jika data tidak valid
+      return; // Hentikan fungsi jika input tidak valid
+      }
+      // Ambil elemen <ul> tempat daftar belanja akan ditampilkan
+      const daftar = document.getElementById("daftarBelanja");
+      // Buat elemen <li> baru untuk item belanja
+      const li = document.createElement("li");
+      // Buat elemen <span> untuk menampilkan teks nama dan jumlah barang
+      const span = document.createElement("span");
+      span.textContent = `${nama} (${jumlah})`; // Isi teks, contoh: "Apel (3)"
+      // Buat tombol "Hapus" untuk menghapus item dari daftar
+      const btn = document.createElement("button");
+      btn.textContent = "Hapus";
+      // Saat tombol diklik, hapus <li> yang berisi item ini dari daftar
+      btn.onclick = function () {
+      daftar.removeChild(li);};
+      // Tambahkan elemen span dan tombol ke dalam <li>
+      li.appendChild(span);
+      li.appendChild(btn);
+      // Tambahkan <li> ke dalam daftar belanja (<ul>)
+      daftar.appendChild(li);
+      // Kosongkan input agar pengguna bisa menambahkan item baru dengan mudah
+      document.getElementById("namaBarang").value = "";
+      document.getElementById("jumlahBarang").value = "";
+      }
+    </script>
   </body>
 </html>
