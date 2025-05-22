@@ -1,23 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>404 - Page Not Found</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konversi mata uang</title>
   </head>
   <body>
-    <div class="container">
-      <h1>404</h1>
-      <img src="img/error-dribbble_2.gif" alt="Lost 404" class="lost-img" />
-      <h2>Page not found</h2>
-      <p>Look like you're lost</p>
-    </div>
+    <h2>Konversi Mata Uang</h2>
+    <label for="nominal">Input Nominal:</label>
+    <input type="number" id="nominal" placeholder="Contoh: 100" />
+    <label for="jenis"> jenis Konversi Mata Uang:</label>
+    <select id="jenis">
+      <option value="USDtoIDR">USD ke IDR</option>
+      <option value="YENtoIDR">YEN ke IDR</option>
+      <option value="IDRtoUSD">IDR ke USD</option>
+
+    </select>
+    <button onclick="konversiMataUang()">Konversi</button>
+    <div id="output"></div>
+    <script>
+      function konversiMataUang() {
+        const nominal = parseFloat(document.getElementById("nominal").value);
+        const jenis = document.getElementById("jenis").value;
+        const output = document.getElementById("output");
+        const kursUSD = 15000;
+        const kursYEN = 114.3;
+        let hasil = "";
+        if (isNaN(nominal)) {
+          hasil = "Masukkan nominal yang valid.";
+        }
+        // KONVERSI MATA UANG ASING KE IDR
+        else {
+          if (jenis === "USDtoIDR") {
+            const rupiah = nominal * kursUSD;
+            hasil = `$ ${nominal.toFixed(2)} = Rp ${rupiah.toLocaleString(
+              "id-ID"
+            )}`;
+          } else if (jenis === "YENtoIDR") {
+            const rupiah = nominal * kursYEN;
+            hasil = `¥ ${nominal.toFixed(2)} = Rp ${rupiah.toLocaleString(
+              "id-ID"
+            )}`;
+          } 
+          else if (jenis === "IDRtoUSD") {
+            const usd = nominal / kursUSD;
+            hasil = `Rp ${nominal.toLocaleString("id-ID")} = $ ${usd.toFixed(
+              2
+            )}`;
+          }
+          else {
+            hasil = "Pilihan konversi tidak valid.";
+          }
+        }
+        output.textContent = hasil;
+      }
+    </script>
   </body>
 </html>
